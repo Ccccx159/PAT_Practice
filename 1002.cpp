@@ -16,7 +16,8 @@ yi san wu
 #include<iostream>
 using namespace std;
 
-int main (){
+int main (int argc, char**argv)
+{
     char num;
 	int sum = 0, n1, n2, n3;
 	while((num = getchar())!='\n'){

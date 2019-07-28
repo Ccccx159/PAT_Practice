@@ -1,4 +1,6 @@
 //仍存在一组测试点存在错误
+//2019.07.27已解决：错误原因：在计算小时时24小时制，大于10的情况，正确的对应英文字符应该为A~N;
+//但是判断条件被写成了“A-Z”，因此导致其中一组测试点出现错误。
 /*
 1014 福尔摩斯的约会 (20 分)
 大侦探福尔摩斯接到一张奇怪的字条：“我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&hgsfdk d&Hyscvnm”。
@@ -46,7 +48,9 @@ int main(int argc, char** argv)
                 cout << '0' << str1[i]-'0';
                 break;
             }
-            else if (str1[i]>='A' && str1[i]<='Z'){
+            //错误之处：
+            //else if (str1[i]>='A' && str1[i]<='Z'){
+            else if (str1[i]>='A' && str1[i]<='N'){
                 cout << str1[i]-'A'+10;
                 break;
             }
