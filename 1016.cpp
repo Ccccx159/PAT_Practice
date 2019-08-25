@@ -19,7 +19,7 @@
 3862767 1 13530293 8
 输出样例 2：
 0
-
+xuan chen
  */
 
 #include <iostream>
