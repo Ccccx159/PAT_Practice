@@ -35,3 +35,59 @@ xuan chen
 94.50
  */
 
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+typedef struct mooncake_s{
+    double unit_price;
+    double sum_price;
+    double stock;
+}mooncake;
+
+bool cmp(mooncake a, mooncake b)
+{
+    return (a.unit_price > b.unit_price);
+}
+
+int main(int argc, char *argv[])
+{
+    int cnt_N=0, quantity_D=0;
+    double price_Sum=0.0;
+    cin >> cnt_N >> quantity_D;
+    vector<mooncake> cake;
+    for (int i=0; i<cnt_N; i++){
+        mooncake tmp_cake = {0};
+        cin >> tmp_cake.stock;
+        cake.push_back(tmp_cake);
+    }
+    for (int i=0; i<cake.size(); i++){
+        double tmp_price = 0;
+        cin >> tmp_price;
+        cake[i].unit_price = tmp_price / cake[i].stock;
+        cake[i].sum_price = tmp_price;
+    }
+    //根据单价降序排序
+    sort(cake.begin(), cake.end(), cmp);
+
+    for (int i=0; i<cake.size(); i++){
+        if (quantity_D < cake[i].stock){
+            price_Sum += quantity_D * cake[i].unit_price;
+            break;
+        }
+        else if (quantity_D == cake[i].stock){
+            price_Sum += cake[i].sum_price;
+            break;
+        }
+        else{
+            quantity_D -= cake[i].stock;
+            price_Sum += cake[i].sum_price;
+        }
+    }
+
+    cout << fixed << setprecision(2) << price_Sum << endl;
+
+    return 0;
+}
