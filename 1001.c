@@ -12,7 +12,7 @@
 输出样例：
 5
 */
-#include <stdlib.h>
+#include <stdio.h>
 int main()
 {
     int cnt=0, x=0;
@@ -29,6 +29,5 @@ int main()
         }
     }
     printf("%d\n", cnt);
-    system("pause");
     return 0;
 }
